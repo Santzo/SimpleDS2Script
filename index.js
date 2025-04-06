@@ -30,8 +30,8 @@ function init() {
 function updateBosskillsAndFiles(bosses, pb) {
   bossesKilled = bosses;
   pbBossesKilled = bosses > pb ? bosses : pb;
+  writeToFile(obsTextFile, `Bosses killed: ${bossesKilled}/42\nPB: ${pbBossesKilled}`);
   writeToFile(pbFile, `{"pb": ${pbBossesKilled}, "bosses": ${bossesKilled}}`);
-  writeToFile(obsTextFile, `Bosses killed: ${bossesKilled} \nPB: ${pbBossesKilled}`);
 }
 
 function writeToFile(file, content) {
@@ -82,7 +82,7 @@ gkm.events.on("key.*", function (data) {
       updateBosskillsAndFiles(bossesKilled - 1, pbBossesKilled);
     }
   } else if (e === "key.released") {
-    if (k === "Left Control") {
+    if (k === "left control") {
       ctrlPressed = false;
     }
   }
